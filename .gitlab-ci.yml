@@ -18,15 +18,15 @@ git-clone-lambda-code:
   before_script:
     - apk add git
   script:
-    - git clone --depth=1 -b main https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.com/serverless4741110/lambdas-src .
+    - git clone --depth=1 -b main https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.com/serverless4741110/lambdas-src repository
     - rm -rf source_code/.git
     - rm LICENSE
     - rm README.md
-    - cd src
+    - cd repository
     - ls
   artifacts:
     paths:
-      - src
+      - repository
 
 # run dummy test command
 # test:

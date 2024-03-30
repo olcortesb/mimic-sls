@@ -31,9 +31,9 @@ functions:
   mimicListens:
     package:
       patterns:
-        - src/**
+        - repository/src/**
       individually: true
-    handler: src/mimicListens.lambdaHandler
+    handler: repository/src/mimicListens.lambdaHandler
     events:
       - http:
           path: /mimic
