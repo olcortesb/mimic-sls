@@ -1,0 +1,69 @@
+# .gitlab-ci.yml
+image: node:18
+
+# define pipeline stages
+stages:
+  - git-clone-lambda-code
+  - test
+  - deploy
+
+# install build tools
+before_script:
+- apt-get update
+- apt-get install -y build-essential
+- yarn -D
+
+git-clone-lambda-code:
+  stage: git-clone-lambda-code
+  image: alpine
+  before_script:
+    - apk add git
+  script:
+    - git clone --depth=1 -b main https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.com/serverless4741110/lambdas-src source_code
+    - rm -rf source_code/.git
+    - cd source_code
+    - ls
+  artifacts:
+    paths:
+      - source_code
+
+# run dummy test command
+test:
+  stage: test
+  script: yarn run test
+
+deploy_production:
+  stage: deploy
+
+  # tag deploy to an environment for tracking
+  environment:
+    name: production
+  script:
+  - yarn run deploy --stage production
+
+  # save build artifacts for publishing
+  artifacts:
+    paths:
+    - .serverless
+
+  # only build when updates are made to "master" branch
+  only:
+  - master
+
+deploy_staging:
+  stage: deploy
+
+  # tag deploy to an environment for tracking
+  environment:
+    name: staging
+  script:
+  - yarn run deploy
+
+  # save build artifacts for publishing
+  artifacts:
+    paths:
+    - .serverless
+
+  # only build when updates are made to "staging" branch
+  only:
+  - staging
