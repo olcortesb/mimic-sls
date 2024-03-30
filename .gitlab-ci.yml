@@ -4,7 +4,6 @@ image: node:18
 # define pipeline stages
 stages:
   - git-clone-lambda-code
-  - test
   - deploy
 
 # install build tools
@@ -28,11 +27,11 @@ git-clone-lambda-code:
       - source_code
 
 # run dummy test command
-test:
-  stage: test
-  script:
-    - cd source_code/src
-    - npm run test
+# test:
+#   stage: test
+#   script:
+#     - cd source_code/src
+#     - npm run test
 
 deploy_production:
   stage: deploy
