@@ -30,7 +30,9 @@ git-clone-lambda-code:
 # run dummy test command
 test:
   stage: test
-  script: yarn run test
+  script:
+    - cd source_code/src
+    - npm run test
 
 deploy_production:
   stage: deploy
@@ -48,7 +50,7 @@ deploy_production:
 
   # only build when updates are made to "master" branch
   only:
-  - master
+  - main
 
 deploy_staging:
   stage: deploy
