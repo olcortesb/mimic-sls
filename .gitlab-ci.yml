@@ -20,9 +20,9 @@ git-clone-lambda-code:
   script:
     - git clone --depth=1 -b main https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.com/serverless4741110/lambdas-src repository
     - rm -rf source_code/.git
+    - cd repository
     - rm LICENSE
     - rm README.md
-    - cd repository
     - ls
   artifacts:
     paths:
