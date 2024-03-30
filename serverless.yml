@@ -31,7 +31,7 @@ functions:
   mimicListens:
     package:
       patterns:
-        - source_code/src/**
+        - src/**
       individually: true
     handler: src/mimicListens.lambdaHandler
     events:
