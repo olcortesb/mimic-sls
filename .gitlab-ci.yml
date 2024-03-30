@@ -23,8 +23,6 @@ git-clone-lambda-code:
     - cd repository
     - rm LICENSE
     - rm README.md
-    - cd src
-    - npm install
   artifacts:
     paths:
       - repository
@@ -43,7 +41,10 @@ deploy_production:
   environment:
     name: production
   script:
-  - sls deploy --stage production
+    - cd repository/src
+    - npm install
+    - cd
+    - sls deploy --stage production
 
   # save build artifacts for publishing
   artifacts:
