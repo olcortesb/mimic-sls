@@ -43,7 +43,7 @@ deploy_production:
   script:
     - cd repository/src
     - npm install
-    - cd
+    - cd ../../
     - sls deploy --stage production
 
   # save build artifacts for publishing
