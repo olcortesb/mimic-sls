@@ -10,7 +10,7 @@ stages:
 before_script:
 - apt-get update
 - apt-get install -y build-essential
-- yarn -D
+- npm install -g serverless
 
 git-clone-lambda-code:
   stage: git-clone-lambda-code
@@ -40,7 +40,7 @@ deploy_production:
   environment:
     name: production
   script:
-  - yarn run deploy --stage production
+  - sls deploy --stage production
 
   # save build artifacts for publishing
   artifacts:
