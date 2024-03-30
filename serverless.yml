@@ -43,7 +43,7 @@ functions:
       patterns:
         - ../src/**
       individually: true
-    handler: src/mimicResponse.lambdaHandler
+    handler: repository/src/mimicResponse.lambdaHandler
     events:
       - http:
           path: /mimic/{id}
