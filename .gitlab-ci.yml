@@ -39,12 +39,12 @@ deploy_production:
 
   # tag deploy to an environment for tracking
   environment:
-    name: production
+    name: slsprod
   script:
     - cd repository/src
     - npm install
     - cd ../../
-    - sls deploy --stage production
+    - sls deploy --stage slsprod
 
   # save build artifacts for publishing
   artifacts:
@@ -62,7 +62,7 @@ deploy_staging:
   environment:
     name: staging
   script:
-  - sls deploy --stage production
+  - sls deploy --stage staging
 
   # save build artifacts for publishing
   artifacts:

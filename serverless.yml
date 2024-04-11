@@ -1,13 +1,13 @@
-service: mimic
+service: mimic-sls
 frameworkVersion: '3'
 
 custom:
-  tableName: 'mimic-sls-${sls:stage}'
+  tableName: 'mimic-${sls:stage}'
 
 provider:
   name: aws
   runtime: nodejs18.x
-  stage: dev
+  stage: slsprod
   region: eu-central-1
   iam:
     role:
@@ -28,7 +28,7 @@ provider:
     MIMIC_TABLE: ${self:custom.tableName}
 
 functions:
-  mimicListens:
+  slsmimicListens:
     package:
       patterns:
         - repository/src/**
@@ -38,7 +38,7 @@ functions:
       - http:
           path: /mimic
           method: POST
-  mimicResponse:
+  slsmimicResponse:
     package:
       patterns:
         - ../src/**
