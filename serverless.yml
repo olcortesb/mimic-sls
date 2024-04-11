@@ -8,7 +8,7 @@ provider:
   name: aws
   runtime: nodejs18.x
   stage: dev
-  region: us-west-2
+  region: eu-central-1
   iam:
     role:
       statements:
@@ -24,7 +24,7 @@ provider:
             - Fn::GetAtt: [ UsersTable, Arn ]
   environment:
     DYNAMO_DB_USE_LOCAL: false
-    DYNAMO_DB_REGION: us-west-2
+    DYNAMO_DB_REGION: eu-central-1
     MIMIC_TABLE: ${self:custom.tableName}
 
 functions:
