@@ -55,20 +55,20 @@ deploy_production:
   only:
   - main
 
-deploy_staging:
-  stage: deploy
+# deploy_staging:
+#   stage: deploy
 
-  # tag deploy to an environment for tracking
-  environment:
-    name: staging
-  script:
-  - sls deploy --stage staging
+#   # tag deploy to an environment for tracking
+#   environment:
+#     name: staging
+#   script:
+#   - sls deploy --stage staging
 
-  # save build artifacts for publishing
-  artifacts:
-    paths:
-    - .serverless
+#   # save build artifacts for publishing
+#   artifacts:
+#     paths:
+#     - .serverless
 
-  # only build when updates are made to "staging" branch
-  only:
-  - staging
+#   # only build when updates are made to "staging" branch
+#   only:
+#   - staging
