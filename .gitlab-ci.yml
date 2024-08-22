@@ -37,6 +37,7 @@ git-clone-lambda-code:
     - cd repository
     - rm LICENSE
     - rm README.md
+    - sls version
   artifacts:
     paths:
       - repository
