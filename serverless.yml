@@ -50,6 +50,7 @@ functions:
       - http:
           path: /mimic
           method: POST
+          private: true
   slsmimicResponse:
     package:
       patterns:
@@ -60,6 +61,7 @@ functions:
       - http:
           path: /mimic/{id}
           method: GET
+          private: true
           request:
             parameters:
               paths:
