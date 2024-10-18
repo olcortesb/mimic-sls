@@ -9,6 +9,9 @@ provider:
   runtime: nodejs18.x
   stage: slsprod
   region: eu-central-1
+  tracing:
+    lambda: true
+    apiGateway: true
   iam:
     role:
       statements:
