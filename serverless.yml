@@ -26,6 +26,18 @@ provider:
     DYNAMO_DB_USE_LOCAL: false
     DYNAMO_DB_REGION: eu-central-1
     MIMIC_TABLE: ${self:custom.tableName}
+  apiGateway:
+    apiKeys:
+      - name: mimic-quota
+        description: mimic api key# Optional
+    usagePlan:
+      quota:
+        limit: 5
+        offset: 2
+        period: MONTH
+      throttle:
+        burstLimit: 200
+        rateLimit: 100
 
 functions:
   slsmimicListens:
