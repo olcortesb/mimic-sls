@@ -41,6 +41,9 @@ provider:
       throttle:
         burstLimit: 200
         rateLimit: 100
+  centralSsm:
+    type: ssm
+    region: eu-central-1
 
 functions:
   slsmimicListens:
