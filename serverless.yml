@@ -61,6 +61,7 @@ functions:
         - ../src/**
       individually: true
     handler: repository/src/mimicResponse.lambdaHandler
+    description: ${ssm:centralssm-resp}
     events:
       - http:
           path: /mimic/{id}
